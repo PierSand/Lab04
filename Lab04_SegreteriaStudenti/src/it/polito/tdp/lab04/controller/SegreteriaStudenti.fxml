@@ -51,12 +51,12 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </Button>
-                  <TextField fx:id="txtCognome">
+                  <TextField fx:id="txtCognome" editable="false">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <TextField fx:id="txtNome">
+                  <TextField fx:id="txtNome" editable="false">
                      <HBox.margin>
                         <Insets bottom="10.0" right="10.0" top="10.0" />
                      </HBox.margin>
@@ -83,7 +83,7 @@
             </HBox>
             <HBox>
                <children>
-                  <TextArea fx:id="txtResult" prefHeight="175.0" prefWidth="534.0">
+                  <TextArea fx:id="txtResult" editable="false" prefHeight="175.0" prefWidth="534.0">
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </HBox.margin>

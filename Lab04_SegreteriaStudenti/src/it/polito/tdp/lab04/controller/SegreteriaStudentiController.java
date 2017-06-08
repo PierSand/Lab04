@@ -55,6 +55,11 @@ public class SegreteriaStudentiController {
 
 	@FXML
 	void doReset(ActionEvent event) {
+		txtMatricola.clear();
+		txtNome.clear();
+		txtCognome.clear();
+		txtResult.clear();
+		
 
 	}
 
