@@ -30,6 +30,8 @@ public class Corso {
 	}
 
 	public String getNome() {
+		if(nome==null)
+			return "";
 		return nome;
 	}
 
@@ -72,7 +74,7 @@ public class Corso {
 
 	@Override
 	public String toString() {
-		return "Corso [codice=" + codice + ", crediti=" + crediti + ", nome=" + nome + ", periodo=" + pd + "]";
+		return nome;
 	}
 	
 	

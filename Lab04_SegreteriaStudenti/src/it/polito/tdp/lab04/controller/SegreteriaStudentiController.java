@@ -50,6 +50,11 @@ public class SegreteriaStudentiController {
 	private TextField txtCognome;
 
 	public void setModel(Model model) {
+		
+		this.model=model;
+		corsi=model.getTuttiICorsi();
+		
+		comboCorso.getItems().addAll(corsi);
 
 	}
 
@@ -65,11 +70,57 @@ public class SegreteriaStudentiController {
 
 	@FXML
 	void doCercaNome(ActionEvent event) {
+		txtResult.clear();
+
+		txtNome.clear();
+
+		txtCognome.clear();
+
+
+
+		try {
+
+
+
+			int matricola = Integer.parseInt(txtMatricola.getText());
+
+			Studente studente = model.getStudente(matricola);
+
+
+
+			if (studente == null) {
+
+				txtResult.appendText("Nessun risultato: matricola inesistente");
+
+				return;
+
+			}
+
+
+
+			txtNome.setText(studente.getNome());
+
+			txtCognome.setText(studente.getCognome());
+
+
+
+		} catch (NumberFormatException e) {
+
+			txtResult.setText("Inserire una matricola nel formato corretto.");
+
+		} catch (RuntimeException e) {
+
+			txtResult.setText("ERRORE DI CONNESSIONE AL DATABASE!");
+
+		}
 
 	}
+	
 
 	@FXML
 	void doCercaIscrittiCorso(ActionEvent event) {
+		
+
 
 	}
 
@@ -95,6 +146,7 @@ public class SegreteriaStudentiController {
 		assert btnIscrivi != null : "fx:id=\"btnIscrivi\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
 		assert txtMatricola != null : "fx:id=\"txtMatricola\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
 		assert btnReset != null : "fx:id=\"btnReset\" was not injected: check your FXML file 'SegreteriaStudenti.fxml'.";
+		
 	}
 
 }

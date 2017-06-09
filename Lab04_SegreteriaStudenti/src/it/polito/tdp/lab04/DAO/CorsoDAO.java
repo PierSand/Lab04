@@ -18,36 +18,68 @@ public class CorsoDAO {
 	 */
 	public List<Corso> getTuttiICorsi() {
 
+
+
 		final String sql = "SELECT * FROM corso";
+
+
 
 		List<Corso> corsi = new LinkedList<Corso>();
 
+
+
 		try {
+
 			Connection conn = ConnectDB.getConnection();
+
 			PreparedStatement st = conn.prepareStatement(sql);
+
+
 
 			ResultSet rs = st.executeQuery();
 
+
+
 			while (rs.next()) {
-					Corso c = new Corso(rs.getString("codins"), rs.getInt("crediti"), rs.getString("nome"), rs.getInt("pd"));
-					if(!corsi.contains(c))
-					corsi.add(c);
+
+
+
+				Corso s = new Corso(rs.getString("codins"), rs.getInt("crediti"), rs.getString("nome"), rs.getInt("pd"));
+
+				corsi.add(s);
+
 			}
 
+
+
 			conn.close();
+
 			return corsi;
 
+
+
 		} catch (SQLException e) {
-			// e.printStackTrace();
+
+			e.printStackTrace();
+
 			throw new RuntimeException("Errore Db");
+
 		}
+
 	}
 
 	/*
 	 * Dato un codice insegnamento, ottengo il corso
 	 */
-	public void getCorso(Corso corso) {
-		// TODO
+	public Corso getCorso(Corso corso) {
+		for(Corso c : this.getTuttiICorsi()){
+			if(c.getCodice().equals(corso.getCodice())){
+				return c;
+			}
+		}
+		return null;
+
+		
 	}
 
 	/*
